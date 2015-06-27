@@ -1,6 +1,2 @@
-<h1>This was processed by:</h1>
-
-<?php
-  echo gethostname(); // may output e.g,: sandie
-?>
+<h1>This was processed by <?php echo gethostname(); ?></h1>
 

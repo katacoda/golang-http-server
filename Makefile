@@ -1,13 +1,29 @@
-NAME="scrapbook/docker-http-server"
-build:
-	docker build -t $(NAME) .
+NAME = scrapbook/docker-http-server
+INSTANCE = scrapbook-http-server
 
-run:
-	docker run -d -P $(NAME)
+.PHONY: default build copy debug clean
+
+default: build
+
+build:
+	docker build -t $(NAME)-dev .
+
+copy:
+	docker create --name $(INSTANCE) $(NAME)-dev
+	docker cp $(INSTANCE):/app/main $(shell pwd)/app
+	docker rm $(INSTANCE)
+
+clean:
+	docker rm $(INSTANCE)
+
+release:
+	docker build -t $(NAME) -f Dockerfile-release .
 
 debug:
-	docker run --rm -it $(NAME) /bin/bash
+	docker run --rm -it --name $(INSTANCE) $(NAME)-dev /bin/bash
 
-deploy:
-	docker push $(NAME)
+run:
+	docker run --rm -p 80:80 --name $(INSTANCE) $(NAME)
 
+dev:
+	docker run -it --rm -w /go/src/github.com/$(NAME) -v $(shell pwd)/vendor/github.com/:/go/src/github.com/ -v $(shell pwd):/go/src/github.com/$(NAME) golang

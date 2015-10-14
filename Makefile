@@ -1,7 +1,7 @@
 NAME = scrapbook/docker-http-server
 INSTANCE = scrapbook-http-server
 
-.PHONY: default build copy debug clean
+.PHONY: default build copy debug clean push
 
 default: build
 
@@ -27,3 +27,6 @@ run:
 
 dev:
 	docker run -it --rm -w /go/src/github.com/$(NAME) -v $(shell pwd)/vendor/github.com/:/go/src/github.com/ -v $(shell pwd):/go/src/github.com/$(NAME) golang
+
+push:
+	docker push $(NAME)

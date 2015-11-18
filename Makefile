@@ -13,11 +13,11 @@ copy:
 	docker cp $(INSTANCE):/app/main $(shell pwd)/app
 	docker rm $(INSTANCE)
 
-clean:
-	docker rm $(INSTANCE)
-
 release:
 	docker build -t $(NAME) -f Dockerfile-release .
+
+clean:
+	docker rm $(INSTANCE)
 
 debug:
 	docker run --rm -it --name $(INSTANCE) $(NAME)-dev /bin/bash

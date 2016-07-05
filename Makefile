@@ -1,4 +1,4 @@
-NAME = scrapbook/docker-http-server
+NAME = katacoda/docker-http-server
 INSTANCE = scrapbook-http-server
 
 .PHONY: default build copy debug clean push
@@ -15,6 +15,7 @@ copy:
 
 release:
 	docker build -t $(NAME) -f Dockerfile-release .
+	docker tag $(NAME):latest $(NAME):v1
 
 clean:
 	docker rm $(INSTANCE)
@@ -29,4 +30,5 @@ dev:
 	docker run -it --rm -w /go/src/github.com/$(NAME) -v $(shell pwd)/vendor/github.com/:/go/src/github.com/ -v $(shell pwd):/go/src/github.com/$(NAME) golang
 
 push:
-	docker push $(NAME)
+	docker push $(NAME):latest
+	docker push $(NAME):v1

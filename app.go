@@ -9,7 +9,7 @@ import (
 func handler(w http.ResponseWriter, r *http.Request) {
   var name, _ = os.Hostname()
 
-  fmt.Fprintf(w, "<h1>This request was processed by host: %s</h1>\n", name)
+  fmt.Fprintf(w, "<h1>New Release! Now v2! This request was processed by host: %s</h1>\n", name)
 }
 
 func main() {

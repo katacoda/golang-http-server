@@ -15,7 +15,7 @@ copy:
 
 release:
 	docker build -t $(NAME) -f Dockerfile-release .
-	docker tag $(NAME):latest $(NAME):v1
+	docker tag $(NAME):latest $(NAME):health
 
 clean:
 	docker rm $(INSTANCE)
@@ -27,7 +27,7 @@ run:
 	docker run --rm -p 80:80 --name $(INSTANCE) $(NAME)
 
 dev:
-	docker run -it --rm -w /go/src/github.com/$(NAME) -v $(shell pwd)/vendor/github.com/:/go/src/github.com/ -v $(shell pwd):/go/src/github.com/$(NAME) golang
+	docker run -it --rm -p 80:80 -w /go/src/github.com/$(NAME) -v $(shell pwd)/vendor/github.com/:/go/src/github.com/ -v $(shell pwd):/go/src/github.com/$(NAME) golang:1.6
 
 push:
 	docker push $(NAME):latest

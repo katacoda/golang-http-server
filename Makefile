@@ -15,7 +15,7 @@ copy:
 
 release:
 	docker build -t $(NAME) -f Dockerfile-release .
-	docker tag $(NAME):latest $(NAME):health
+	docker tag $(NAME):latest $(NAME):unhealthy
 
 clean:
 	docker rm $(INSTANCE)

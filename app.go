@@ -29,7 +29,7 @@ func unhealthy(w http.ResponseWriter, r *http.Request) {
 
 func main() {
   fmt.Fprintf(os.Stdout, "Web Server started. Listening on 0.0.0.0:80\n")
-  isHealthy = true
+  isHealthy = false
   http.HandleFunc("/", handler)
   http.HandleFunc("/healthy", healthy)
   http.HandleFunc("/unhealthy", unhealthy)

@@ -13,7 +13,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-  fmt.Fprintf(os.Stdout, "Web Server started. Listening on 0.0.0.0:80\n")
+  fmt.Fprintf(os.Stdout, "Web Server started. Listening on 0.0.0.0:8080\n")
   http.HandleFunc("/", handler)
-  http.ListenAndServe(":80", nil)
+  http.ListenAndServe(":8080", nil)
 }

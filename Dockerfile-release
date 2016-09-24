@@ -1,4 +1,4 @@
 FROM scratch
-EXPOSE 80
+EXPOSE 8080
+ENTRYPOINT ["/app"]
 COPY app /
-CMD ["/app"]

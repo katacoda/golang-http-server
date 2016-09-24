@@ -1,5 +1,5 @@
 NAME = katacoda/docker-http-server
-TAG=openshift-v1
+TAG=openshift-v2
 INSTANCE = scrapbook-http-server
 
 .PHONY: default build copy release buildrelease debug clean push

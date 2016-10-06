@@ -1,5 +1,5 @@
 FROM golang:1.6-alpine
-EXPOSE 80
+EXPOSE 8080
 CMD ["/app/main"]
 
 RUN mkdir /app 

@@ -1,5 +1,5 @@
 NAME = katacoda/docker-http-server
-TAG=latest
+TAG=v1
 INSTANCE = scrapbook-http-server
 
 .PHONY: default build copy debug clean push buildrelease
@@ -16,6 +16,7 @@ copy:
 
 release:
 	docker build -t $(NAME):$(TAG) -f Dockerfile-release .
+	docker tag $(NAME):$(TAG) $(NAME):latest
 
 buildrelease: build copy release
 
@@ -33,3 +34,4 @@ dev:
 
 push:
 	docker push $(NAME):$(TAG)
+	docker push $(NAME):latest

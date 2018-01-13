@@ -1,0 +1,8 @@
+pipeline:
+  build:
+    image: plugins/docker
+    repo: docker-http-server
+    tags: 
+      - 1.0.0
+      - 1.0
+      - latest

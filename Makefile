@@ -1,5 +1,5 @@
 NAME = katacoda/docker-http-server
-TAG=v1
+TAG=crashloop
 INSTANCE = scrapbook-http-server
 
 .PHONY: default build copy debug clean push buildrelease
@@ -16,7 +16,7 @@ copy:
 
 release:
 	docker build -t $(NAME):$(TAG) -f Dockerfile-release .
-	docker tag $(NAME):$(TAG) $(NAME):latest
+	docker tag $(NAME):$(TAG) $(NAME):crashloop
 
 buildrelease: build copy release
 
